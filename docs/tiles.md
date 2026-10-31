@@ -34,23 +34,23 @@ const map = new mapkern.Map({ container: "map", style: mapkern.lightStyle({ url:
 
 Each tile has the layers below. Use the layer name as `sourceLayer` when you write your own styles. A layer only starts showing up at the zoom in the second column, and small things like ponds, parks and buildings are left out until they're big enough to see.
 
-| Layer | From zoom | Fields |
-| --- | --- | --- |
-| `water` | 0 | `class` is `ocean`, `lake`, `reservoir`, `basin` or `river`. `intermittent` is 1 for seasonal water |
-| `waterway` | 8 | Rivers and streams as lines. `class` is `river`, `canal`, `stream`, `ditch` or `drain`. Also `name`, `brunnel`, `intermittent` |
-| `landcover` | 5 | `class` is `wood`, `grass`, `scrub`, `wetland`, `sand`, `rock`, `ice` or `farmland` |
-| `landuse` | 6 | `class` is `residential`, `commercial`, `retail`, `industrial`, `railway`, `cemetery`, `military`, `quarry`, `construction`, `farmland`, `religious`, `park`, `pitch`, `golf`, `school`, `hospital`, `parking`, `airport`, `pier` or `pedestrian` |
-| `park` | 5 | Protected areas. `class` is `national_park`, `nature_reserve` or `protected_area`, plus `name` |
-| `boundary` | 0 | `admin_level` from 2 (countries) to 8 (cities). `maritime` and `disputed` are 1 where they apply |
-| `aeroway` | 10 | `class` is `runway`, `taxiway` or `apron` |
-| `road` | 4 | See below |
-| `railway` | 9 | `class` is `rail`, `light_rail`, `subway`, `tram`, `narrow_gauge`, `monorail`, `funicular` or `preserved`. Also `name`, `brunnel`, `service`, `layer` |
-| `building` | 12 | `height` and `min_height` in meters when OpenStreetMap has them. `part` is 1 for building parts |
-| `place` | 2 | City, town and neighborhood points. `class` is the OpenStreetMap place type, plus `name`, `rank`, `capital` and `population` |
-| `poi` | 8 | Shops, cafes, schools and so on. `class` is the OpenStreetMap key (`amenity`, `shop`, `tourism`...) and `subclass` its value (`cafe`, `bakery`...). Also `name` and `rank` |
-| `water_name` | 8 | Points for naming lakes, bays and seas |
-| `mountain_peak` | 8 | `class` is `peak` or `volcano`, plus `name` and `ele` in meters |
-| `housenumber` | 14 | `housenumber` |
+| Layer           | From zoom | Fields                                                                                                                                                                                                                                            |
+| --------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `water`         | 0         | `class` is `ocean`, `lake`, `reservoir`, `basin` or `river`. `intermittent` is 1 for seasonal water                                                                                                                                               |
+| `waterway`      | 8         | Rivers and streams as lines. `class` is `river`, `canal`, `stream`, `ditch` or `drain`. Also `name`, `brunnel`, `intermittent`                                                                                                                    |
+| `landcover`     | 5         | `class` is `wood`, `grass`, `scrub`, `wetland`, `sand`, `rock`, `ice` or `farmland`                                                                                                                                                               |
+| `landuse`       | 6         | `class` is `residential`, `commercial`, `retail`, `industrial`, `railway`, `cemetery`, `military`, `quarry`, `construction`, `farmland`, `religious`, `park`, `pitch`, `golf`, `school`, `hospital`, `parking`, `airport`, `pier` or `pedestrian` |
+| `park`          | 5         | Protected areas. `class` is `national_park`, `nature_reserve` or `protected_area`, plus `name`                                                                                                                                                    |
+| `boundary`      | 0         | `admin_level` from 2 (countries) to 8 (cities). `maritime` and `disputed` are 1 where they apply                                                                                                                                                  |
+| `aeroway`       | 10        | `class` is `runway`, `taxiway` or `apron`                                                                                                                                                                                                         |
+| `road`          | 4         | See below                                                                                                                                                                                                                                         |
+| `railway`       | 9         | `class` is `rail`, `light_rail`, `subway`, `tram`, `narrow_gauge`, `monorail`, `funicular` or `preserved`. Also `name`, `brunnel`, `service`, `layer`                                                                                             |
+| `building`      | 12        | `height` and `min_height` in meters when OpenStreetMap has them. `part` is 1 for building parts                                                                                                                                                   |
+| `place`         | 2         | City, town and neighborhood points. `class` is the OpenStreetMap place type, plus `name`, `rank`, `capital` and `population`                                                                                                                      |
+| `poi`           | 8         | Shops, cafes, schools and so on. `class` is the OpenStreetMap key (`amenity`, `shop`, `tourism`...) and `subclass` its value (`cafe`, `bakery`...). Also `name` and `rank`                                                                        |
+| `water_name`    | 8         | Points for naming lakes, bays and seas                                                                                                                                                                                                            |
+| `mountain_peak` | 8         | `class` is `peak` or `volcano`, plus `name` and `ele` in meters                                                                                                                                                                                   |
+| `housenumber`   | 14        | `housenumber`                                                                                                                                                                                                                                     |
 
 Anything with a name has `name`, the local name, and `name_en` when the English name is different. `rank` puts places and points of interest in order of importance, with lower numbers showing up earlier as you zoom in. `brunnel` is `bridge`, `tunnel` or `ford`.
 
