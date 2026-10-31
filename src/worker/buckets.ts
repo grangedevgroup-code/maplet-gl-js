@@ -547,9 +547,9 @@ const CORNER_X = [-127, 127, 127, -127];
 const CORNER_Y = [-127, -127, 127, 127];
 
 function clamp8(v: number): number {
-  return v < -127 ? -127 : v > 127 ? 127 : v;
+  return Math.max(-127, Math.min(127, v));
 }
 
 function clamp16(v: number): number {
-  return v < -32768 ? -32768 : v > 32767 ? 32767 : v;
+  return Math.max(-32768, Math.min(32767, v));
 }
