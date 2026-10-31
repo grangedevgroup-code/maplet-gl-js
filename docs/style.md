@@ -139,22 +139,22 @@ Drawing settings go in `paint`, and settings that change the shape of what's dra
 
 Fills the whole map with one color. It's usually the first layer.
 
-| Paint | Default |
-| --- | --- |
-| `color` | `#000000` |
-| `opacity` | 1 |
+| Paint     | Default   |
+| --------- | --------- |
+| `color`   | `#000000` |
+| `opacity` | 1         |
 
 ### raster
 
-| Paint | Default | |
-| --- | --- | --- |
-| `opacity` | 1 | |
-| `brightnessMin`, `brightnessMax` | 0, 1 | Squeeze the brightness range, from 0 to 1 |
-| `contrast` | 0 | From -1 to 1 |
-| `saturation` | 0 | From -1 (grey) to 1 |
-| `hueRotate` | 0 | In degrees |
-| `fadeDuration` | 200 | How long new tiles take to fade in, in ms. Fixed value only |
-| `resampling` | `linear` | Or `nearest` for sharp pixels. Fixed value only |
+| Paint                            | Default  |                                                             |
+| -------------------------------- | -------- | ----------------------------------------------------------- |
+| `opacity`                        | 1        |                                                             |
+| `brightnessMin`, `brightnessMax` | 0, 1     | Squeeze the brightness range, from 0 to 1                   |
+| `contrast`                       | 0        | From -1 to 1                                                |
+| `saturation`                     | 0        | From -1 (grey) to 1                                         |
+| `hueRotate`                      | 0        | In degrees                                                  |
+| `fadeDuration`                   | 200      | How long new tiles take to fade in, in ms. Fixed value only |
+| `resampling`                     | `linear` | Or `nearest` for sharp pixels. Fixed value only             |
 
 ### hillshade
 
@@ -164,15 +164,15 @@ Shades the ground from an [elevation](#elevation) source as if it were lit from 
 { id: "hills", type: "hillshade", source: "dem", paint: { exaggeration: 0.4 } }
 ```
 
-| Paint | Default | |
-| --- | --- | --- |
-| `exaggeration` | 0.5 | How strong the shading is, from 0 to 1 |
-| `shadowColor` | `#000000` | For slopes that face away from the light |
-| `highlightColor` | `#ffffff` | For slopes that face the light |
-| `accentColor` | `#000000` | Darkens steep slopes, whichever way they face |
-| `illuminationDirection` | 335 | Where the light comes from, in degrees clockwise from the top of the screen. 335 is the top left. Fixed value only |
-| `illuminationAnchor` | `viewport` | `viewport` keeps the light on the same side of the screen when you rotate the map, `map` turns it with the map, so 0 is north. Fixed value only |
-| `method` | `lambert` | `lambert` is Mapkern's own shading, lit from 45 degrees up. `standard` is the shading MapLibre and Mapbox draw, which styles written for them get by default. Fixed value only |
+| Paint                   | Default    |                                                                                                                                                                                |
+| ----------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `exaggeration`          | 0.5        | How strong the shading is, from 0 to 1                                                                                                                                         |
+| `shadowColor`           | `#000000`  | For slopes that face away from the light                                                                                                                                       |
+| `highlightColor`        | `#ffffff`  | For slopes that face the light                                                                                                                                                 |
+| `accentColor`           | `#000000`  | Darkens steep slopes, whichever way they face                                                                                                                                  |
+| `illuminationDirection` | 335        | Where the light comes from, in degrees clockwise from the top of the screen. 335 is the top left. Fixed value only                                                             |
+| `illuminationAnchor`    | `viewport` | `viewport` keeps the light on the same side of the screen when you rotate the map, `map` turns it with the map, so 0 is north. Fixed value only                                |
+| `method`                | `lambert`  | `lambert` is Mapkern's own shading, lit from 45 degrees up. `standard` is the shading MapLibre and Mapbox draw, which styles written for them get by default. Fixed value only |
 
 Flat ground stays clear, so the layer works on top of land and water fills. Put it below roads and labels. When you zoom out, slopes are steepened a little so mountain ranges stay visible.
 
@@ -180,64 +180,64 @@ Flat ground stays clear, so the layer works on top of land and water fills. Put 
 
 Draws polygons.
 
-| Paint | Default | |
-| --- | --- | --- |
-| `color` | `#000000` | per feature |
-| `opacity` | 1 | per feature |
-| `outlineColor` | the fill color | per feature. The thin line around each polygon |
-| `pattern` | none | The name of an [image](#icons) to repeat across the polygon instead of the color, like `"marsh"`. It stays put on the map as you pan, and fades between sizes as you zoom so it never jumps |
-| `antialias` | `true` | Draws that outline, which also smooths the edges |
-| `translate` | `[0, 0]` | Shift in pixels |
-| `translateAnchor` | `map` | `map` turns the shift with the map, `viewport` keeps it pointing the same way on screen |
+| Paint             | Default        |                                                                                                                                                                                             |
+| ----------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `color`           | `#000000`      | per feature                                                                                                                                                                                 |
+| `opacity`         | 1              | per feature                                                                                                                                                                                 |
+| `outlineColor`    | the fill color | per feature. The thin line around each polygon                                                                                                                                              |
+| `pattern`         | none           | The name of an [image](#icons) to repeat across the polygon instead of the color, like `"marsh"`. It stays put on the map as you pan, and fades between sizes as you zoom so it never jumps |
+| `antialias`       | `true`         | Draws that outline, which also smooths the edges                                                                                                                                            |
+| `translate`       | `[0, 0]`       | Shift in pixels                                                                                                                                                                             |
+| `translateAnchor` | `map`          | `map` turns the shift with the map, `viewport` keeps it pointing the same way on screen                                                                                                     |
 
 ### line
 
 Draws lines, and the edges of polygons.
 
-| Paint | Default | |
-| --- | --- | --- |
-| `color` | `#000000` | per feature |
-| `width` | 1 | per feature, in pixels |
-| `opacity` | 1 | per feature |
-| `blur` | 0 | per feature. Softens the edges, in pixels |
-| `dash` | none | A pattern like `[2, 1]`, measured in line widths. It can change with the zoom through `step` |
-| `offset` | 0 | per feature. Moves the line sideways, in pixels: right of the direction it was drawn in, or left for negative values |
-| `gapWidth` | 0 | per feature. Splits the line into two lines of `width` with a gap this wide between them, as for the edges of a bridge |
+| Paint      | Default   |                                                                                                                        |
+| ---------- | --------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `color`    | `#000000` | per feature                                                                                                            |
+| `width`    | 1         | per feature, in pixels                                                                                                 |
+| `opacity`  | 1         | per feature                                                                                                            |
+| `blur`     | 0         | per feature. Softens the edges, in pixels                                                                              |
+| `dash`     | none      | A pattern like `[2, 1]`, measured in line widths. It can change with the zoom through `step`                           |
+| `offset`   | 0         | per feature. Moves the line sideways, in pixels: right of the direction it was drawn in, or left for negative values   |
+| `gapWidth` | 0         | per feature. Splits the line into two lines of `width` with a gap this wide between them, as for the edges of a bridge |
 
-| Layout | Default | |
-| --- | --- | --- |
-| `cap` | `butt` | Or `round`, `square` |
-| `join` | `miter` | Or `round`, `bevel` |
-| `miterLimit` | 2 | Sharp corners longer than this many widths are cut off |
+| Layout       | Default |                                                        |
+| ------------ | ------- | ------------------------------------------------------ |
+| `cap`        | `butt`  | Or `round`, `square`                                   |
+| `join`       | `miter` | Or `round`, `bevel`                                    |
+| `miterLimit` | 2       | Sharp corners longer than this many widths are cut off |
 
 ### circle
 
 Draws a circle at each point.
 
-| Paint | Default | |
-| --- | --- | --- |
-| `radius` | 5 | per feature, in pixels |
-| `color` | `#000000` | per feature |
-| `opacity` | 1 | per feature |
-| `strokeColor` | `#000000` | per feature |
-| `strokeWidth` | 0 | per feature, in pixels |
-| `strokeOpacity` | 1 | per feature. `opacity` fades only the inside |
-| `blur` | 0 | per feature. Softens the edge, in pixels |
-| `translate` | `[0, 0]` | Shift in pixels, with `translateAnchor` as for fills |
-| `pitchScale` | `viewport` | `map` makes circles smaller in the distance when the map tilts |
-| `pitchAlignment` | `viewport` | `map` lays circles flat on the tilted map |
+| Paint            | Default    |                                                                |
+| ---------------- | ---------- | -------------------------------------------------------------- |
+| `radius`         | 5          | per feature, in pixels                                         |
+| `color`          | `#000000`  | per feature                                                    |
+| `opacity`        | 1          | per feature                                                    |
+| `strokeColor`    | `#000000`  | per feature                                                    |
+| `strokeWidth`    | 0          | per feature, in pixels                                         |
+| `strokeOpacity`  | 1          | per feature. `opacity` fades only the inside                   |
+| `blur`           | 0          | per feature. Softens the edge, in pixels                       |
+| `translate`      | `[0, 0]`   | Shift in pixels, with `translateAnchor` as for fills           |
+| `pitchScale`     | `viewport` | `map` makes circles smaller in the distance when the map tilts |
+| `pitchAlignment` | `viewport` | `map` lays circles flat on the tilted map                      |
 
 ### heatmap
 
 Shows where points crowd together, as a smooth glow that gets warmer the more points there are.
 
-| Paint | Default | |
-| --- | --- | --- |
-| `radius` | 30 | per feature. How far each point spreads, in pixels |
-| `weight` | 1 | per feature. How much each point counts |
-| `intensity` | 1 | Multiplies every weight. Raise it as you zoom out, when points pile up less |
-| `color` | blue to red | The color for each density, from 0 to 1 |
-| `opacity` | 1 | |
+| Paint       | Default     |                                                                             |
+| ----------- | ----------- | --------------------------------------------------------------------------- |
+| `radius`    | 30          | per feature. How far each point spreads, in pixels                          |
+| `weight`    | 1           | per feature. How much each point counts                                     |
+| `intensity` | 1           | Multiplies every weight. Raise it as you zoom out, when points pile up less |
+| `color`     | blue to red | The color for each density, from 0 to 1                                     |
+| `opacity`   | 1           |                                                                             |
 
 `color` is an expression of `["heatmap-density"]`, which goes from 0 where there are no points to 1 where they're dense:
 
@@ -266,15 +266,15 @@ Raises polygons into 3D shapes, usually buildings. Walls are shaded by the direc
 }
 ```
 
-| Paint | Default | |
-| --- | --- | --- |
-| `color` | `#000000` | per feature |
-| `height` | 0 | per feature, in meters |
-| `base` | 0 | per feature. Where the shape starts, in meters, for things like overhangs and building parts |
-| `opacity` | 1 | For the whole layer. Below 1 you see the map through the buildings, but not their inside walls |
+| Paint     | Default   |                                                                                                |
+| --------- | --------- | ---------------------------------------------------------------------------------------------- |
+| `color`   | `#000000` | per feature                                                                                    |
+| `height`  | 0         | per feature, in meters                                                                         |
+| `base`    | 0         | per feature. Where the shape starts, in meters, for things like overhangs and building parts   |
+| `opacity` | 1         | For the whole layer. Below 1 you see the map through the buildings, but not their inside walls |
 
-| Layout | Default | |
-| --- | --- | --- |
+| Layout         | Default   |                                                                                                 |
+| -------------- | --------- | ----------------------------------------------------------------------------------------------- |
 | `hideOutlines` | see below | Leaves out a shape that holds other shapes of the layer, so a detailed building shows its parts |
 
 OpenStreetMap maps a detailed building, like the Space Needle, as an outline with parts inside it: legs, floors, a roof. The outline carries the height of the whole building, so drawn as well, it wraps the parts in one plain block. Tiles usually keep both. With `hideOutlines`, Mapkern leaves out a shape when other shapes of the layer fit inside it, both in footprint and in height, cover at least half of it and reach most of its height. A low podium with a separate tower on top stays, because the tower is taller than the podium, and so does a building where only the ground floor is mapped as a part.
@@ -290,60 +290,60 @@ Draws text, icons, or both. When symbols would overlap, the one with the lower `
 Apart from `variableAnchor`, every layout property also takes an expression, so it can change with the zoom, like `["step", ["zoom"], "point", 11, "line"]`. The ones marked per feature can also differ from one feature to the next. A line break, `"
 "`, in the text starts a new line.
 
-| Layout | Default | |
-| --- | --- | --- |
-| `text` | empty | per feature. Usually `["get", "name"]` |
-| `size` | 14 | per feature, in pixels |
-| `priority` | 0 | per feature. Higher wins |
-| `font` | `["sans-serif"]` | per feature. Font families to try in order, or font names on the style's `glyphs` server, see [Fonts](#fonts) |
-| `weight` | `normal` | per feature. Or `bold` |
-| `italic` | `false` | per feature |
-| `placement` | `point` | `line` makes the text follow the line, repeated along it. `line-center` puts one label at the middle of each line |
-| `anchor` | `center` | per feature. Which part of the text sits on the point: `top`, `bottom`, `left`, `right` or a corner like `top-left` |
-| `variableAnchor` | none | A list of anchors to try in order, such as `["top", "bottom", "left", "right"]`. Each label takes the first one that fits |
-| `offset` | `[0, 0]` | per feature. Shift, measured in font sizes |
-| `radialOffset` | none | per feature. Distance from the point in font sizes, in the direction of the anchor. Handy with `variableAnchor` |
-| `justify` | `center` | per feature. Lines of a wrapped label line up on the `left`, `right` or `center`. `auto` follows the anchor |
-| `lineHeight` | 1.2 | Distance between wrapped lines, in font sizes |
-| `rotate` | 0 | per feature. Turns point labels, in degrees clockwise |
-| `rotationAlignment` | `auto` | `viewport` keeps text upright even when it's placed along a line, the way road shields usually are. `auto` and `map` let line labels follow the line |
-| `pitchAlignment` | `auto` | On a tilted map, `auto` and `map` lay labels that follow a line flat on the ground, so they shrink into the distance like the road under them. `viewport` keeps them facing the screen |
-| `maxWidth` | 10 | per feature. Wrap point labels after this many font sizes |
-| `letterSpacing` | 0 | per feature. Extra space between letters, in font sizes |
-| `padding` | 2 | Space kept clear around the label, in pixels |
-| `spacing` | 250 | Distance between repeats of a line label, in pixels |
-| `allowOverlap` | `false` | Show the label even when it collides |
-| `ignorePlacement` | `false` | Let other symbols draw over this label's space |
-| `maxAngle` | 45 | The sharpest bend, in degrees, a label may follow along a line |
-| `keepUpright` | `true` | Flip line labels so they never read upside down |
-| `transform` | `none` | per feature. Or `uppercase`, `lowercase` |
-| `optional` | `false` | With an icon, show the icon alone when the text doesn't fit |
-| `icon` | none | per feature. The name of an [image](#icons), such as `"cafe"` or `["get", "kind"]` |
-| `iconSize` | 1 | per feature. Scales the image |
-| `iconRotate` | 0 | per feature, in degrees clockwise |
-| `iconAnchor` | `center` | per feature. Which part of the icon sits on the point: `top`, `bottom`, `left`, `right` or a corner like `bottom-left` |
-| `iconOffset` | `[0, 0]` | per feature. Shift in pixels, before `iconSize` |
-| `iconPadding` | 2 | Space kept clear around the icon, in pixels |
-| `iconAllowOverlap` | `false` | Show the icon even when it collides |
-| `iconIgnorePlacement` | `false` | Let other symbols draw over this icon's space |
-| `iconOptional` | `false` | Show the text alone when the icon doesn't fit |
-| `iconRotationAlignment` | `auto` | `map` turns icons with the map, `viewport` keeps them upright. `auto` means `map` on lines and `viewport` on points |
-| `iconTextFit` | `none` | `width`, `height` or `both` stretch the icon to fit its text, the way a road shield grows with the road's number. Only the stretchable parts of the image grow, see [Icons](#icons) |
-| `iconTextFitPadding` | `[0, 0, 0, 0]` | Extra room around the text in pixels, as `[top, right, bottom, left]` |
+| Layout                  | Default          |                                                                                                                                                                                        |
+| ----------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `text`                  | empty            | per feature. Usually `["get", "name"]`                                                                                                                                                 |
+| `size`                  | 14               | per feature, in pixels                                                                                                                                                                 |
+| `priority`              | 0                | per feature. Higher wins                                                                                                                                                               |
+| `font`                  | `["sans-serif"]` | per feature. Font families to try in order, or font names on the style's `glyphs` server, see [Fonts](#fonts)                                                                          |
+| `weight`                | `normal`         | per feature. Or `bold`                                                                                                                                                                 |
+| `italic`                | `false`          | per feature                                                                                                                                                                            |
+| `placement`             | `point`          | `line` makes the text follow the line, repeated along it. `line-center` puts one label at the middle of each line                                                                      |
+| `anchor`                | `center`         | per feature. Which part of the text sits on the point: `top`, `bottom`, `left`, `right` or a corner like `top-left`                                                                    |
+| `variableAnchor`        | none             | A list of anchors to try in order, such as `["top", "bottom", "left", "right"]`. Each label takes the first one that fits                                                              |
+| `offset`                | `[0, 0]`         | per feature. Shift, measured in font sizes                                                                                                                                             |
+| `radialOffset`          | none             | per feature. Distance from the point in font sizes, in the direction of the anchor. Handy with `variableAnchor`                                                                        |
+| `justify`               | `center`         | per feature. Lines of a wrapped label line up on the `left`, `right` or `center`. `auto` follows the anchor                                                                            |
+| `lineHeight`            | 1.2              | Distance between wrapped lines, in font sizes                                                                                                                                          |
+| `rotate`                | 0                | per feature. Turns point labels, in degrees clockwise                                                                                                                                  |
+| `rotationAlignment`     | `auto`           | `viewport` keeps text upright even when it's placed along a line, the way road shields usually are. `auto` and `map` let line labels follow the line                                   |
+| `pitchAlignment`        | `auto`           | On a tilted map, `auto` and `map` lay labels that follow a line flat on the ground, so they shrink into the distance like the road under them. `viewport` keeps them facing the screen |
+| `maxWidth`              | 10               | per feature. Wrap point labels after this many font sizes                                                                                                                              |
+| `letterSpacing`         | 0                | per feature. Extra space between letters, in font sizes                                                                                                                                |
+| `padding`               | 2                | Space kept clear around the label, in pixels                                                                                                                                           |
+| `spacing`               | 250              | Distance between repeats of a line label, in pixels                                                                                                                                    |
+| `allowOverlap`          | `false`          | Show the label even when it collides                                                                                                                                                   |
+| `ignorePlacement`       | `false`          | Let other symbols draw over this label's space                                                                                                                                         |
+| `maxAngle`              | 45               | The sharpest bend, in degrees, a label may follow along a line                                                                                                                         |
+| `keepUpright`           | `true`           | Flip line labels so they never read upside down                                                                                                                                        |
+| `transform`             | `none`           | per feature. Or `uppercase`, `lowercase`                                                                                                                                               |
+| `optional`              | `false`          | With an icon, show the icon alone when the text doesn't fit                                                                                                                            |
+| `icon`                  | none             | per feature. The name of an [image](#icons), such as `"cafe"` or `["get", "kind"]`                                                                                                     |
+| `iconSize`              | 1                | per feature. Scales the image                                                                                                                                                          |
+| `iconRotate`            | 0                | per feature, in degrees clockwise                                                                                                                                                      |
+| `iconAnchor`            | `center`         | per feature. Which part of the icon sits on the point: `top`, `bottom`, `left`, `right` or a corner like `bottom-left`                                                                 |
+| `iconOffset`            | `[0, 0]`         | per feature. Shift in pixels, before `iconSize`                                                                                                                                        |
+| `iconPadding`           | 2                | Space kept clear around the icon, in pixels                                                                                                                                            |
+| `iconAllowOverlap`      | `false`          | Show the icon even when it collides                                                                                                                                                    |
+| `iconIgnorePlacement`   | `false`          | Let other symbols draw over this icon's space                                                                                                                                          |
+| `iconOptional`          | `false`          | Show the text alone when the icon doesn't fit                                                                                                                                          |
+| `iconRotationAlignment` | `auto`           | `map` turns icons with the map, `viewport` keeps them upright. `auto` means `map` on lines and `viewport` on points                                                                    |
+| `iconTextFit`           | `none`           | `width`, `height` or `both` stretch the icon to fit its text, the way a road shield grows with the road's number. Only the stretchable parts of the image grow, see [Icons](#icons)    |
+| `iconTextFitPadding`    | `[0, 0, 0, 0]`   | Extra room around the text in pixels, as `[top, right, bottom, left]`                                                                                                                  |
 
-| Paint | Default | |
-| --- | --- | --- |
-| `color` | `#000000` | per feature |
-| `haloColor` | transparent | per feature |
-| `haloWidth` | 0 | per feature |
-| `haloBlur` | 0 | per feature. Fades the halo out over this many pixels |
-| `opacity` | 1 | per feature |
-| `translate` | `[0, 0]` | Shift the text in pixels, with `translateAnchor` as for fills |
-| `iconOpacity` | 1 | per feature |
-| `iconTranslate` | `[0, 0]` | Shift the icon in pixels, with `iconTranslateAnchor` |
-| `iconColor` | `#000000` | per feature, for SDF icons only |
-| `iconHaloColor` | transparent | per feature, for SDF icons only |
-| `iconHaloWidth` | 0 | per feature, in pixels, for SDF icons only |
+| Paint           | Default     |                                                               |
+| --------------- | ----------- | ------------------------------------------------------------- |
+| `color`         | `#000000`   | per feature                                                   |
+| `haloColor`     | transparent | per feature                                                   |
+| `haloWidth`     | 0           | per feature                                                   |
+| `haloBlur`      | 0           | per feature. Fades the halo out over this many pixels         |
+| `opacity`       | 1           | per feature                                                   |
+| `translate`     | `[0, 0]`    | Shift the text in pixels, with `translateAnchor` as for fills |
+| `iconOpacity`   | 1           | per feature                                                   |
+| `iconTranslate` | `[0, 0]`    | Shift the icon in pixels, with `iconTranslateAnchor`          |
+| `iconColor`     | `#000000`   | per feature, for SDF icons only                               |
+| `iconHaloColor` | transparent | per feature, for SDF icons only                               |
+| `iconHaloWidth` | 0           | per feature, in pixels, for SDF icons only                    |
 
 A symbol with both an icon and text needs room for both, unless you set `optional` or `iconOptional`. On lines, icons sit at each repeat and turn with the line, which is how one-way arrows are drawn.
 
