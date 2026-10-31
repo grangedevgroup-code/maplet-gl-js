@@ -74,7 +74,7 @@ export function signedDistanceField(
   for (let i = 0; i < size; i++) {
     const distance = Math.sqrt(outer[i]!) - Math.sqrt(inner[i]!);
     const value = Math.round(255 - 255 * (distance / radius + SDF_CUTOFF));
-    out[i] = value < 0 ? 0 : value > 255 ? 255 : value;
+    out[i] = Math.max(0, Math.min(255, value));
   }
   return out;
 }
