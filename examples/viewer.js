@@ -76,7 +76,7 @@ function memory(enabled) {
 function choose(basemaps, wanted) {
   if (Number.isInteger(wanted) && wanted >= 0 && wanted < basemaps.length) return wanted;
   const named = basemaps.findIndex((b) => b.name === wanted);
-  return named < 0 ? 0 : named;
+  return Math.max(named, 0);
 }
 
 export function createViewer(options = {}) {
